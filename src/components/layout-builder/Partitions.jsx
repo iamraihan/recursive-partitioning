@@ -17,32 +17,6 @@ const Partition = ({
     onSplit(id, direction);
   };
 
-  const renderContent = () => (
-    <div
-      className="absolute inset-0 flex items-center justify-center bg-opacity-75"
-      style={{ backgroundColor: color }}
-    >
-      <button
-        onClick={() => handleSplit("V")}
-        className="px-2 py-1 m-1 bg-white text-black rounded"
-      >
-        V
-      </button>
-      <button
-        onClick={() => handleSplit("H")}
-        className="px-2 py-1 m-1 bg-white text-black rounded"
-      >
-        H
-      </button>
-      <button
-        onClick={() => onRemove(id)}
-        className="px-2 py-1 m-1 bg-red-500 text-white rounded"
-      >
-        -
-      </button>
-    </div>
-  );
-
   if (split === "V") {
     return (
       <div className="flex w-full h-full">
@@ -97,7 +71,29 @@ const Partition = ({
       maxConstraints={[parentWidth, parentHeight]}
       className="relative border"
     >
-      {renderContent()}
+      <div
+        className="absolute inset-0 flex items-center justify-center bg-opacity-75"
+        style={{ backgroundColor: color }}
+      >
+        <button
+          onClick={() => handleSplit("V")}
+          className="px-2 py-1 m-1 bg-white text-black rounded"
+        >
+          V
+        </button>
+        <button
+          onClick={() => handleSplit("H")}
+          className="px-2 py-1 m-1 bg-white text-black rounded"
+        >
+          H
+        </button>
+        <button
+          onClick={() => onRemove(id)}
+          className="px-2 py-1 m-1 bg-red-500 text-white rounded"
+        >
+          -
+        </button>
+      </div>
     </ResizableBox>
   );
 };
