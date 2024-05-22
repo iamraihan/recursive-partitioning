@@ -11,6 +11,7 @@ const Partition = ({
   parentHeight,
 }) => {
   const [split, setSplit] = useState(null);
+  const [isHover, setIsHover] = useState(false);
 
   const handleSplit = (direction) => {
     setSplit(direction);
@@ -70,6 +71,8 @@ const Partition = ({
       minConstraints={[100, 100]}
       maxConstraints={[parentWidth, parentHeight]}
       className="relative border"
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
     >
       <div
         className="absolute inset-0 flex items-center justify-center bg-opacity-75"
@@ -94,6 +97,11 @@ const Partition = ({
           -
         </button>
       </div>
+      {isHover && (
+        <div className="absolute bottom-1 right-1 bg-black px-2 py-1 text-white opacity-30">
+          Drag me to resize
+        </div>
+      )}
     </ResizableBox>
   );
 };
